@@ -1,19 +1,17 @@
 const connection = require("./db");
 const express = require("express");
 const app = express();
-
+app.use(express.static("public"));
 app.use(express.json());
 
 app.listen(3000, () => {
   console.log("Servidor rodando na porta 3000");
 });
- 
  // Create 
-app.post("/funcionarios", (req, res) => {
-  const { nome, cargo, salario } = req.body;
+app.post("/funcionarios", (req, res) => { const { nome, salario } = req.body;
 
-  const sql = "INSERT INTO funcionarios (nome, cargo, salario) VALUES (?, ?, ?)";
-  connection.query(sql, [nome, cargo, salario], (err) => {
+  const sql = "INSERT INTO funcionarios (nome, salario) VALUES (?, ?)";
+  connection.query(sql, [nome, salario], (err) => {
     if (err) return res.status(500).send(err);
     res.send("Funcionário criado");
   });
@@ -42,10 +40,10 @@ app.get("/funcionarios/:id", (req, res) => {
  // Update
 app.put("/funcionarios/:id", (req, res) => {
   const { id } = req.params;
-  const { nome, cargo, salario } = req.body;
+  const { nome, salario } = req.body;
 
-  const sql = "UPDATE funcionarios SET nome=?, cargo=?, salario=? WHERE id=?";
-  connection.query(sql, [nome, cargo, salario, id], (err) => {
+  const sql = "UPDATE funcionarios SET nome=?, salario=? WHERE id=?";
+  connection.query(sql, [nome, salario, id], (err) => {
     if (err) return res.status(500).send(err);
     res.send("Funcionário atualizado");
   });
