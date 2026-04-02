@@ -1,0 +1,9 @@
+<button onclick="listar()">Listar Funcionários</button>
+
+<script>
+async function listar() {
+  const res = await fetch("http://localhost:3306/funcionarios");
+  const data = await res.json();
+  console.log(data);
+}
+</script>
