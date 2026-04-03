@@ -7,7 +7,7 @@ app.use(express.json());
 app.listen(3000, () => {
   console.log("Servidor rodando na porta 3000");
 });
- // Create 
+ // Create Onde se insere o nome e salario
 app.post("/funcionarios", (req, res) => { const { nome, salario } = req.body;
 
   const sql = "INSERT INTO funcionarios (nome, salario) VALUES (?, ?)";
@@ -17,7 +17,7 @@ app.post("/funcionarios", (req, res) => { const { nome, salario } = req.body;
   });
 });
 
- // Read
+ // Read Colocar o nome e salario
 app.get("/funcionarios", (req, res) => {
   connection.query("SELECT * FROM funcionarios", (err, results) => {
     if (err) return res.status(500).send(err);
@@ -37,7 +37,7 @@ app.get("/funcionarios/:id", (req, res) => {
   );
 });
 
- // Update
+ // Update Atualiza caso ouver novas informações do funcionario
 app.put("/funcionarios/:id", (req, res) => {
   const { id } = req.params;
   const { nome, salario } = req.body;
@@ -49,7 +49,7 @@ app.put("/funcionarios/:id", (req, res) => {
   });
 });
 
- // Delete
+ // Delete excluir um funcionario da lista
 app.delete("/funcionarios/:id", (req, res) => {
   const { id } = req.params;
 
