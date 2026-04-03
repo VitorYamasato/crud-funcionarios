@@ -16,14 +16,14 @@ O que foi utilizado e suas versões:
 - dotenv v17.4.0
 
 Para rodar:
-1-Clone o repositorio
-2-Baixe as dependencias
-3-Configure o arquivo .env:
+1 - Clone o repositorio
+2 - Baixe as dependencias
+3 - Configure o arquivo .env:
 DB_HOST=localhost
 DB_USER=root
 DB_PASSWORD=sua_senha
 DB_NAME=lista
-4-Execute o projeto
+4 - Execute o projeto
 
 ## 🗄️ Banco de dados
 
